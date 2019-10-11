@@ -34,15 +34,32 @@ WHERE payment_date > '2007-05-01'
 ORDER BY payment_date DESC;
 
 
+From the payment table, filter out the rows where the payment date is greater than '2007-05-01', then select the payment date and return in reverse chronological order.
+
+
+
+
+
 SELECT payment_id, payment_date
 From payment
 WHERE amount < 3;
+
+From the payment table, Filter all payments where the amount is over $3, and select the corresponding payment id, and payment date. 
+
+
+
 
 
 SELECT customer_id, email, active
 From customer
 WHERE store_id = 1 AND active = 0
 ORDER BY last_update;
+
+
+In the customer table, find all the customers with a store number = 1 and active value = 0, then select their customer id, email, and active status number. Finally, order by the date that the record was last updated. 
+
+
+
 
 -- THESE TWO ARE A BIT TRICKIER
 SELECT c.name, COUNT(f.film_id) as total
@@ -53,9 +70,16 @@ GROUP BY c.category_id
 ORDER BY total DESC ;
 
 
+
+Join the film, film category, and category tables. Then group by category id and count the film ids. Select the total count of films in each category and order by descending values. 
+
+
+
 SELECT *
 FROM payment
 WHERE amount > (SELECT AVG(amount) FROM payment);
+
+From the payment table, sum all the payment amounts and count the number of payments to then find the average amount. Then, filter all of the payments that are greater than the average amount, and select all of the information from the other columns. 
 
 
 
